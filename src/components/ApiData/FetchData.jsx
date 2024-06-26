@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { News } from "./StyledFetchNews";
 function FetchData({ cat }) {
   const [Data, setData] = useState("");
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     await axios
       .get(
         cat
@@ -14,10 +14,10 @@ function FetchData({ cat }) {
       .then((res) =>
         setData(res.data.articles.filter((article) => article.urlToImage))
       );
-  };
+  },[cat])
   useEffect(() => {
     fetchData();
-  }, [cat]);
+  }, [fetchData]);
 
   return (
     <div className="container-md">
