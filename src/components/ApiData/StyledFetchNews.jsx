@@ -3,6 +3,10 @@ export const News = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 1rem;
+  }
   .news-box {
     padding: 10px;
     transition: all 0.2s ease;
@@ -16,14 +20,25 @@ export const News = styled.section`
       padding: 1rem;
       background-color: black;
       color: white;
+      @media (max-width: 500px) {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+      }
     }
     p {
-      padding: .1rem .3rem;
+      padding: 0.1rem 0.3rem;
       font-size: 1.3rem;
+      @media (max-width: 500px) {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+      }
     }
-    .link{
+    .link {
       text-decoration: none;
       margin-left: 1rem;
     }
+  }
+  .spinner {
+   
   }
 `;

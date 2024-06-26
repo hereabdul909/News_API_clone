@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { TopContent } from "./StyledHeader";
 import {
   AiFillFacebook,
   AiFillLinkedin,
@@ -8,7 +7,6 @@ import {
   AiOutlineTwitter,
   AiFillYoutube,
 } from "react-icons/ai";
-
 function Header() {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
@@ -23,7 +21,6 @@ function Header() {
         setError("Error fetching weather data");
       }
     };
-
     fetchWeatherData();
   }, []);
   if (error) {
@@ -42,38 +39,42 @@ function Header() {
   };
   const formattedDate = currentDate.toLocaleDateString("en-US", options);
   return (
-    <header className="container ">
-      <TopContent>
-        <div>
+    <header className="container-xl d-sm-flex justify-content-between align-items-center p-2 text-center border-bottom border-dark">
+      <div className="d-lg-flex">
+        <div className="mx-3">
           <p>{formattedDate}</p>
         </div>
-        <div>
+        <div className="mx-3">
           <p>{temp}°C,London</p>
         </div>
-        <div>
-          <h1>World Vision</h1>
+      </div>
+      <div>
+        <h1>World Vision</h1>
+      </div>
+      <div className="d-lg-flex align-items-center">
+        <div className="mx-2">
+          <p className="">English|Espanol</p>
         </div>
-        <div className="d-flex align-items-center">
-          <p className="mx-1">English|Espanol</p>
-          <ul className="d-flex list-unstyled">
-            <li className="mx-2 fs-4">
+        <div className="mx-2 ">
+          <ul className=" d-flex justify-content-center list-unstyled ">
+            <li className="fs-4 mx-1">
               <AiFillLinkedin />
             </li>
-            <li className="mx-2 fs-4">
+            <li className="fs-4 mx-1">
               <AiFillFacebook />
             </li>
-            <li className="mx-2 fs-4">
+            <li className="fs-4 mx-1">
               <AiOutlineTwitter />
             </li>
-            <li className="mx-2 fs-4">
+            <li className="fs-4 mx-1">
               <AiFillInstagram />
             </li>
-            <li className="mx-2 fs-4">
+            <li className="fs-4 mx-1">
               <AiFillYoutube />
             </li>
           </ul>
         </div>
-      </TopContent>
+      </div>
     </header>
   );
 }

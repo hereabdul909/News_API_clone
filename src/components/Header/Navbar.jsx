@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import './Navbar.css'
+import "./Navbar.css";
 const Li = styled.li`
   margin-inline: 1.3rem;
   font-weight: 800;
   margin-top: 1rem;
   cursor: pointer;
+  @media (max-width: 900px) {
+    margin-inline: 0.5rem;
+  }
   &:hover {
     text-decoration: underline;
   }
 `;
 function Navbar() {
-  const [navClass, setNavClass] = useState('container');
+  const [navClass, setNavClass] = useState("container-xl");
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 60) {
-        setNavClass('container-fluid top');
+        setNavClass("container-fluid top");
       } else {
-        setNavClass('container');
+        setNavClass("container-xl");
       }
-    }
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener
+    };
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <nav className={`border-bottom border-grey  ${navClass}`}>
-      <ul className="d-flex justify-content-center p-2 list-unstyled">
+    <nav className={`${navClass}`} >
+      <ul className="d-flex justify-content-center p-md-1 list-unstyled menu">
         <Link className="text-decoration-none text-dark" to="/">
           <Li>World</Li>
         </Link>

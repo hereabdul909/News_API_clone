@@ -20,30 +20,34 @@ function FetchData({ cat }) {
   }, [cat]);
 
   return (
-    <div className="container">
+    <div className="container-md">
       <h4 className="text-center p-3">Top Headlines</h4>
       <News>
-        {Data
-          ? Data.map((items) => (
-              <>
-                <div className="news-box">
-                  <img
-                    src={items.urlToImage}
-                    className="img-fluid"
-                    alt="Not Available"
-                  />
-                  <h4> {items.title} </h4>
-                  <p>
-                    {items.description}
-                    <Link className="link" to={items.url}>
-                      Read More...
-                    </Link>
-                  </p>
-                  <span>{items.publishedAt}</span>
-                </div>
-              </>
-            ))
-          : "Loading...."}
+        {Data ? (
+          Data.map((items) => (
+            <>
+              <div className="news-box">
+                <img
+                  src={items.urlToImage}
+                  className="img-fluid"
+                  alt="Not Available"
+                />
+                <h4> {items.title} </h4>
+                <p>
+                  {items.description}
+                  <Link className="link" to={items.url}>
+                    Read More...
+                  </Link>
+                </p>
+                <span>{items.publishedAt}</span>
+              </div>
+            </>
+          ))
+        ) : (
+          <div className="spinner-border spinner" role="status">
+            <span className="sr-only "></span>
+          </div>
+        )}
       </News>
     </div>
   );
